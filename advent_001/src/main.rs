@@ -28,21 +28,17 @@ fn input_to_vec_string(input: String) -> Vec<String>
 fn input_to_vec_u32(input: Vec<String>) -> Vec<u32>
 {
 	let mut ints: Vec<u32> = vec![];
-	for string in input
-	{
-		ints.push(string.parse::<u32>().unwrap());
-	}
+	for string in input { ints.push(string.parse::<u32>().unwrap()); }
 	return ints;
 }
 
 fn find_sum_of_trails(input: &Vec<u32>) -> u32
 {
-	let length = input.len();
 	let mut sum: usize = 0;
-	for i in 0..length
+	for i in 0..input.len()
 	{
-		if (i != length - 1 && input[i] == input[i + 1])
-		|| (i == length - 1 && input[i] == input[0])
+		if (i != input.len() - 1 && input[i] == input[i + 1])
+		|| (i == input.len() - 1 && input[i] == input[0])
 		{
 			sum += input[i] as usize;
 		}
@@ -52,12 +48,11 @@ fn find_sum_of_trails(input: &Vec<u32>) -> u32
 
 fn find_sum_of_half_circles(input: &Vec<u32>) -> u32
 {
-	let length = input.len();
 	let mut sum: usize = 0;
-	for i in 0..length
+	for i in 0..input.len()
 	{
-		let mut halfway_point = i + length / 2;
-		if halfway_point > length - 1 { halfway_point -= length }
+		let mut halfway_point = i + input.len() / 2;
+		if halfway_point > input.len() - 1 { halfway_point -= input.len() }
 		if input[i] == input[halfway_point] { sum += input[i] as usize }
 	}
 	return sum as u32;
