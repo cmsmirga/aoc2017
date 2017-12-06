@@ -1,0 +1,4 @@
+[package]
+name = "advent_006"
+version = "0.1.0"
+authors = ["Christopher Smirga <cmsmirga@gmail.com>"]
